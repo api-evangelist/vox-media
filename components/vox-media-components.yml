@@ -1,0 +1,27 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.coralproject.net/
+families:
+- family: Comment stream embed
+  description: >-
+    Coral's primary surface is an embeddable comment stream rendered on a
+    publisher page via the instance-served embed script and
+    createStreamEmbed(), which accepts configuration including an SSO access
+    token; embed.login()/embed.logout() manage the commenter session.
+  docs: https://docs.coralproject.net/cms
+- family: Single comment embed
+  description: Embed an individual comment outside the stream (e.g. in an article).
+  docs: https://docs.coralproject.net/comment-embed
+- family: Comment counts
+  description: Script-injected comment-count widgets for story listings and article pages.
+  docs: https://docs.coralproject.net/counts
+- family: AMP support
+  description: Support for rendering Coral comments on AMP pages.
+  docs: https://docs.coralproject.net/amp
+- family: Rich text editor
+  description: The Coral Rich Text Editor used in the comment stream, published as @coralproject/rte on npm.
+  docs: https://www.npmjs.com/package/@coralproject/rte
+loaders:
+- name: embed script
+  notes: Served from the publisher's own Coral instance ({coral_domain}); styling customizable via CSS (https://docs.coralproject.net/css).
+notes: Distinct from server-side tooling in packages/ - these are the client-side embeddable surfaces.

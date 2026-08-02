@@ -1,0 +1,49 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.coralproject.net/webhooks
+type: Webhooks
+description: >-
+  Coral (Coral by Vox Media) delivers webhook events as POST requests with
+  JSON payloads to endpoints configured in the admin panel at
+  /admin/configure/webhooks on a Coral instance. No AsyncAPI document is
+  published; this captures the documented webhook catalog.
+envelope:
+  fields:
+  - name: id
+    description: Unique identifier for the event
+  - name: type
+    description: Event name (see events below)
+  - name: data
+    description: Event-specific payload object
+  - name: createdAt
+    description: ISO 8601 timestamp
+  - name: tenantID
+    description: ID of the Coral tenant emitting the event
+  - name: tenantDomain
+    description: Domain of the Coral tenant emitting the event
+signing:
+  header: X-Coral-Signature
+  algorithm: HMAC-SHA256
+  format: signatures prefixed with sha256=, comma-separated when multiple secrets are active
+  notes: >-
+    Multiple signatures appear when the signing secret has been rolled from
+    the administrative panel with the previous secret kept active. Verify with
+    a constant-time comparison of the HMAC of the raw request body.
+events:
+- name: STORY_CREATED
+  description: A new story was created; data includes storyID, storyURL, siteID.
+- name: COMMENT_CREATED
+  description: A comment was published (status NONE or APPROVED).
+- name: COMMENT_REPLY_CREATED
+  description: A published reply was created; data includes ancestorIDs array.
+- name: COMMENT_ENTERED_MODERATION_QUEUE
+  description: A comment entered a moderation queue; data includes its status.
+- name: COMMENT_LEFT_MODERATION_QUEUE
+  description: A comment left a moderation queue; data includes its status.
+management:
+  ui: /admin/configure/webhooks
+  graphql_mutations:
+  - createWebhookEndpoint
+  - enableWebhookEndpoint
+  - disableWebhookEndpoint
+  - deleteWebhookEndpoint

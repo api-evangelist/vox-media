@@ -1,0 +1,34 @@
+generated: '2026-07-21'
+method: derived
+source: graphql/vox-media-coral-schema.graphql + docs.coralproject.net
+standards:
+- id: graphql
+  conforms: true
+  evidence: Coral exposes a GraphQL API at /api/graphql; published schema (290 object types) captured at graphql/vox-media-coral-schema.graphql
+- id: relay-cursor-pagination
+  conforms: true
+  evidence: Schema uses Connection/PageInfo cursor pagination (45 Connection type references, type PageInfo)
+- id: webhook-hmac-signatures
+  conforms: true
+  evidence: Webhooks signed with HMAC-SHA256 via X-Coral-Signature header (docs.coralproject.net/webhooks)
+- id: jwt
+  conforms: true
+  evidence: SSO user authentication uses HS256-signed JWTs with documented claims (docs.coralproject.net/sso)
+- id: gdpr
+  conforms: true
+  evidence: Coral documents GDPR compliance tooling for commenter data (docs.coralproject.net/gdpr)
+- id: eu-dsa
+  conforms: true
+  evidence: GraphQL schema includes DSA (Digital Services Act) reporting operations (createDSAReport, addDSAReportNote, makeDSAReportDecision, changeDSAReportStatus)
+- id: oauth2
+  conforms: false
+  evidence: No OAuth 2.0 authorization server published; admin Bearer tokens are created via coral-cli
+- id: oidc
+  conforms: false
+  evidence: No /.well-known/openid-configuration on any probed host
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors are returned in the GraphQL errors[] envelope, not application/problem+json
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: No /.well-known/security.txt on voxmedia.com or coralproject.net; disclosure policy published at https://www.voxmedia.com/security/ instead

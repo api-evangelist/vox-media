@@ -1,7 +1,12 @@
 aid: vox-media
 name: Vox Media
-description: 'Vox Media is a company surfaced as a portfolio company of accel and added to the API Evangelist
-  network as a stub for enrichment. Sector: consumer. This profile is a lead awaiting the enrichment pipeline.'
+description: >-
+  Vox Media is a modern media company whose networks include The Verge, Vox,
+  New York Magazine, SB Nation, Eater, Polygon, The Cut, and Vulture. Its
+  developer-facing surface centers on Coral (Coral by Vox Media), the
+  open-source commenting and community-moderation platform used by more than
+  500 newsrooms in 28 countries, which exposes a GraphQL API, HMAC-signed
+  webhooks, an embeddable comment stream, and the coral-cli developer tool.
 url: https://raw.githubusercontent.com/api-evangelist/vox-media/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -9,18 +14,114 @@ x-backed-by:
 - accel
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/vox-media.png
 tags:
 - Company
 - Consumer
-apis: []
+- Media
+- Publishing
+- News
+- Comments
+- Community
+- Moderation
+- GraphQL
+apis:
+- name: Coral GraphQL API
+  description: >-
+    Coral by Vox Media is an open-source commenting platform. Each self-hosted
+    or managed Coral instance exposes a GraphQL API at /api/graphql covering
+    stories, comments, users, sites, moderation queues, webhooks, and tokens.
+    Direct API integration is limited to administrative users authenticating
+    with a Bearer access token created via coral-cli.
+  humanURL: https://docs.coralproject.net/api/schema
+  baseURL: https://{coral_domain}/api/graphql
+  tags:
+  - Comments
+  - Community
+  - Moderation
+  - GraphQL
+  properties:
+  - type: Documentation
+    url: https://docs.coralproject.net/
+  - type: APIReference
+    url: https://docs.coralproject.net/api/schema
+  - type: GraphQL
+    url: graphql/vox-media-coral-schema.graphql
+  - type: Webhooks
+    url: asyncapi/vox-media-coral-webhooks.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Security
+  url: https://www.voxmedia.com/security/
+- type: VulnerabilityDisclosure
+  url: security/vox-media-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/vox-media-domain-security.yml
 - type: Website
-  url: http://www.voxmedia.com
+  url: https://www.voxmedia.com
+- type: Documentation
+  url: https://docs.coralproject.net/
+- type: APIReference
+  url: https://docs.coralproject.net/api/schema
+- type: GettingStarted
+  url: https://docs.coralproject.net/
+- type: Support
+  url: https://docs.coralproject.net/contact
+- type: Blog
+  url: https://coralproject.net/blog/
+- type: GitHubOrganization
+  url: https://github.com/voxmedia
+- type: Pricing
+  url: https://coralproject.net/pricing/
+- type: PrivacyPolicy
+  url: https://www.voxmedia.com/privacy-policy/
+- type: TermsOfService
+  url: https://www.voxmedia.com/terms-of-use/
+- type: Packages
+  url: packages/vox-media-packages.yml
+- type: CLI
+  url: cli/vox-media-cli.yml
+- type: LLMsTxt
+  url: llms/vox-media-llms.txt
+- type: Authentication
+  url: authentication/vox-media-authentication.yml
+- type: Conformance
+  url: conformance/vox-media-conformance.yml
+- type: Lifecycle
+  url: lifecycle/vox-media-lifecycle.yml
+- type: ChangeLog
+  url: changelog/vox-media-changelog.yml
+- type: Conventions
+  url: conventions/vox-media-conventions.yml
+- type: Components
+  url: components/vox-media-components.yml
+- type: DataModel
+  url: data-model/vox-media-data-model.yml
+- type: Sandbox
+  url: sandbox/vox-media-sandbox.yml
+- type: Webhooks
+  url: asyncapi/vox-media-coral-webhooks.yml
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 16
+  pass: local-v1

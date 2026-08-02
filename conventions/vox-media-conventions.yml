@@ -1,0 +1,55 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.coralproject.net/api/schema
+derived_from: graphql/vox-media-coral-schema.graphql
+authentication:
+  style: bearer-token
+  notes: >-
+    Admin Bearer access tokens (created via coral-cli) for direct GraphQL API
+    calls; HS256 SSO JWTs for end-user (commenter) identity. See
+    authentication/vox-media-authentication.yml.
+idempotency:
+  supported: false
+  notes: No idempotency-key header or replay-safety contract is documented for the GraphQL API.
+pagination:
+  style: cursor
+  notes: >-
+    Relay-style cursor pagination throughout the GraphQL schema - Connection
+    types with edges/nodes, PageInfo, and first/after (and last/before)
+    arguments; some list arguments carry @constraint(max:) limits (e.g.
+    Comment.flags(first Int = 10 @constraint(max 50))).
+field_selection:
+  style: graphql
+  notes: Clients fetch only the fields they request; no sparse-fieldsets or expand parameters needed.
+request_tracing: null
+versioning:
+  style: platform-release
+  notes: >-
+    No per-request API versioning; the schema evolves with platform releases
+    (semver) using the @deprecated directive for retired fields. See
+    lifecycle/vox-media-lifecycle.yml and changelog/vox-media-changelog.yml.
+error_envelope:
+  style: graphql-errors
+  notes: >-
+    Errors are returned in the standard GraphQL errors[] array; non-admin
+    callers issuing arbitrary (non-persisted) queries receive the
+    RAW_QUERY_NOT_AUTHORIZED error code.
+rate_limiting:
+  signaling: none-documented
+  notes: >-
+    The schema defines a @rate(max, seconds, key) directive applied to
+    rate-limited fields/mutations; no rate-limit response headers are
+    documented.
+query_safety:
+  persisted_queries: true
+  notes: >-
+    Only admin users can make arbitrary queries against the GraphQL API;
+    other clients are restricted to persisted queries
+    (https://docs.coralproject.net/category/persisted-queries).
+caching:
+  notes: The schema uses @cacheControl(maxAge) hints on types such as Comment (5s), Story (30s), and Settings (30s).
+cross_links:
+- authentication/vox-media-authentication.yml
+- lifecycle/vox-media-lifecycle.yml
+- changelog/vox-media-changelog.yml
+- asyncapi/vox-media-coral-webhooks.yml

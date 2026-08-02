@@ -1,0 +1,39 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.coralproject.net/api/schema
+docs: https://docs.coralproject.net/sso
+summary:
+  types: [http-bearer, jwt-sso]
+  api_key_in: [header]
+  oauth2_flows: []
+schemes:
+- name: AdminAccessToken
+  type: http
+  scheme: bearer
+  description: >-
+    Direct API integration with the Coral GraphQL API (/api/graphql) is
+    limited to administrative users. Access tokens are created with coral-cli
+    (coral-cli token:create --domain <domain> --name <name> --json) and passed
+    as Authorization: Bearer <signedToken>. Tokens are listed and revoked via
+    coral-cli token:list / token:revoke. Only admin users can make arbitrary
+    queries; other callers get RAW_QUERY_NOT_AUTHORIZED (persisted queries
+    only).
+  docs: https://docs.coralproject.net/api/schema
+- name: SSOUserToken
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: >-
+    End-user (commenter) authentication integrates a publisher's own identity
+    system via SSO JWTs signed with HS256 using the signing secret from the
+    Coral admin panel. Required claims: user.id, user.email, user.username.
+    Optional claims: jti, exp, iat, user.badges, user.role (COMMENTER, STAFF,
+    MODERATOR, ADMIN), user.url. Tokens are passed to the embed via
+    createStreamEmbed(), embed.login(), and cleared with embed.logout().
+    Authentication strategies cannot be shared per user (SSO vs email login
+    are exclusive).
+  docs: https://docs.coralproject.net/sso
+notes: >-
+  No OAuth 2.0 or OpenID Connect surface is published. The GraphQL schema also
+  carries an @auth(roles:[...]) directive gating fields by role (ADMIN,
+  MODERATOR, etc.).

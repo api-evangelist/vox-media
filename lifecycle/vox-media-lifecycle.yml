@@ -1,0 +1,31 @@
+generated: '2026-07-21'
+method: searched
+source: https://github.com/coralproject/talk/releases
+versioning:
+  scheme: semver
+  current: v9.11.8
+  docs: https://github.com/coralproject/talk/releases
+  notes: >-
+    Coral versions the whole self-hosted platform (server + embed) with
+    semantic versioning; publishers upgrade instances on their own schedule.
+    Major-version migration guides are published in the docs
+    (migrating-from-4, migrating-5-to-6, migrating-6-to-7, migrating-7-to-8,
+    migrate-from-talk).
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: >-
+    No formal public deprecation policy or RFC 8594 Sunset-header support is
+    documented. The GraphQL schema uses the standard @deprecated directive on
+    retired fields (https://docs.coralproject.net/api/types/directives/deprecated).
+sla: null
+status_page: null
+migration_guides:
+- https://docs.coralproject.net/migrate-from-talk
+- https://docs.coralproject.net/migrating-from-4
+- https://docs.coralproject.net/migrating-5-to-6
+- https://docs.coralproject.net/migrating-6-to-7
+- https://docs.coralproject.net/migrating-7-to-8
+notes: >-
+  Vox Media publishes no public API status page or SLA; Coral is primarily
+  self-hosted so availability is operator-owned.

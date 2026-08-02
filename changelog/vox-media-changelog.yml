@@ -1,0 +1,50 @@
+generated: '2026-07-21'
+method: searched
+source: https://github.com/coralproject/talk/releases
+scheme: semver
+current_version: v9.11.8
+notes: >-
+  Coral (coralproject/talk, "A better commenting experience from Vox Media")
+  publishes dated releases on GitHub. Recent window only; the releases page is
+  the source of truth. Version-to-version migration guides live at
+  docs.coralproject.net (migrating-5-to-6 through migrating-7-to-8,
+  migrate-from-talk).
+entries:
+- version: v9.11.8
+  date: '2026-07-07'
+  breaking: false
+  highlights:
+  - Remove extra whitespace in notification snippets for the external notifications service
+- version: v9.11.7
+  date: '2026-06-24'
+  breaking: false
+  highlights:
+  - Fix styling when using KLIPY as GIF provider
+- version: v9.11.5
+  date: '2026-06-03'
+  breaking: false
+  highlights:
+  - Fix Twitter embeds by replacing twitter.com references with x.com
+- version: v9.11.4
+  date: '2026-05-06'
+  breaking: false
+  highlights:
+  - Pin Sentry to 2.x in workflow
+  - Finnish and Arabic translation updates
+- version: v9.11.3
+  date: '2026-04-09'
+  breaking: false
+  highlights:
+  - External notifications can be disabled per tenant; track which tenant sends notifications
+- version: v9.11.2
+  date: '2026-01-13'
+  breaking: false
+  highlights: []
+- version: v9.11.1
+  date: '2025-12-19'
+  breaking: false
+  highlights: []
+- version: v9.11.0
+  date: '2025-12-09'
+  breaking: false
+  highlights: []

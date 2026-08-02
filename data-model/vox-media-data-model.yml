@@ -1,0 +1,58 @@
+generated: '2026-07-21'
+method: derived
+source: graphql/vox-media-coral-schema.graphql
+entities:
+- name: Site
+  description: A site (property) within a Coral tenant; stories belong to sites.
+- name: Story
+  description: An article/page hosting a comment stream (status, url, closed/archived state, comment counts, settings).
+- name: Comment
+  description: A commenter contribution (body, status, depth, tags, action counts, revision history).
+- name: CommentRevision
+  description: An edit revision of a comment.
+- name: User
+  description: A commenter, staff, moderator, or admin account.
+- name: Flag
+  description: A flag action raised against a comment.
+- name: WebhookEndpoint
+  description: A configured webhook delivery endpoint.
+- name: Token
+  description: An API access token for admin integration.
+- name: Settings
+  description: Tenant-level configuration.
+relationships:
+- from: Story
+  to: Site
+  kind: belongs_to
+  via: site
+- from: Story
+  to: Comment
+  kind: has_many
+  via: comments (CommentsConnection)
+- from: Comment
+  to: Story
+  kind: belongs_to
+  via: story
+- from: Comment
+  to: User
+  kind: belongs_to
+  via: author
+- from: Comment
+  to: Comment
+  kind: belongs_to
+  via: parent (also rootParent, parents connection, ancestorIDs)
+- from: Comment
+  to: CommentRevision
+  kind: has_many
+  via: revisionHistory (current via revision)
+- from: Comment
+  to: Flag
+  kind: has_many
+  via: flags (FlagsConnection)
+- from: Story
+  to: ModerationQueues
+  kind: has_one
+  via: moderationQueues
+notes: >-
+  Derived from the Coral GraphQL schema (290 object types; Relay-style
+  connections). Entity list is the core commenting domain, not exhaustive.

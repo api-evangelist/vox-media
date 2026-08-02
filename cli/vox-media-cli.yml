@@ -1,0 +1,54 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.coralproject.net/cli
+name: coral-cli
+package: "@coralproject/coral-cli"
+registry: npm
+install:
+- npm install -g @coralproject/coral-cli
+framework: oclif
+commands:
+- group: authentication
+  commands:
+  - name: login
+    description: Log in to a Coral instance (coral-cli login --domain=yourdomain.com)
+  - name: logout
+    description: End the Coral session
+- group: tokens
+  commands:
+  - name: token:create
+    description: Create an API access token (coral-cli token:create --domain=<domain> --name=<name> --json); the signedToken value is used as the Bearer token for the GraphQL API
+  - name: token:list
+    description: List existing access tokens
+  - name: token:revoke
+    description: Revoke an access token
+- group: stories
+  commands:
+  - name: story:get
+    description: Fetch story metadata by URL (coral-cli story:get --domain=<domain> --url=<storyURL>)
+  - name: story:merge
+    description: Merge duplicate stories (coral-cli story:merge --domain=<domain> --from=<sourceID> --into=<destID>)
+  - name: story:update
+    description: Update story metadata
+- group: plugins
+  commands:
+  - name: plugins
+    description: List installed CLI plugins
+  - name: plugins:install
+    description: Install a CLI plugin
+  - name: plugins:link
+    description: Link a local CLI plugin
+  - name: plugins:uninstall
+    description: Uninstall a CLI plugin
+  - name: plugins:update
+    description: Update CLI plugins
+- group: help
+  commands:
+  - name: help
+    description: Display help for coral-cli
+flows:
+- name: create-api-token
+  steps:
+  - coral-cli login --domain=yourdomain.com
+  - coral-cli token:create --domain=yourdomain.com --name=mytoken --json
+  - Use signedToken as Authorization Bearer token against /api/graphql

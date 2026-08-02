@@ -1,0 +1,37 @@
+generated: '2026-07-21'
+method: searched
+source: https://registry.npmjs.org/-/v1/search?text=coralproject
+packages:
+- language: javascript
+  registry: npm
+  name: "@coralproject/coral-cli"
+  url: https://www.npmjs.com/package/@coralproject/coral-cli
+  install: npm install -g @coralproject/coral-cli
+  official: true
+  notes: First-party CLI to interact with a Coral instance (login, token management, story operations). Built on oclif.
+- language: javascript
+  registry: npm
+  name: "@coralproject/coral-cli-command"
+  url: https://www.npmjs.com/package/@coralproject/coral-cli-command
+  install: npm install @coralproject/coral-cli-command
+  official: true
+  notes: Base class for Coral CLI commands (plugin authors).
+- language: javascript
+  registry: npm
+  name: "@coralproject/rte"
+  url: https://www.npmjs.com/package/@coralproject/rte
+  install: npm install @coralproject/rte
+  official: true
+  notes: Coral Rich Text Editor component used by the comment stream.
+- language: javascript
+  registry: npm
+  name: "@voxmedia/identity-library"
+  url: https://www.npmjs.com/package/@voxmedia/identity-library
+  install: npm install @voxmedia/identity-library
+  official: true
+  notes: Vox Media JavaScript library that sends a salted hash of a user UID (identity signal for Vox Media properties).
+notes: >-
+  Coral does not ship a dedicated GraphQL client SDK; the docs recommend using
+  any standard GraphQL client library against /api/graphql. Packages above are
+  first-party tooling published under the @coralproject and @voxmedia npm
+  scopes (Coral is Coral by Vox Media).

@@ -1,0 +1,22 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.coralproject.net/
+environments:
+- name: local-development
+  description: >-
+    Coral is open source; a full sandbox is a local instance run via Docker
+    (recommended, default port 5000) or from source (default port 3000) with
+    MongoDB, Redis, Node.js, and PNPM. Publishers test against their own
+    instance rather than a hosted shared sandbox.
+  docs: https://docs.coralproject.net/
+- name: graphiql-playground
+  description: >-
+    A GraphiQL IDE with integrated schema explorer is available at /graphiql
+    on a running instance in development mode only (not recommended for
+    production).
+  docs: https://docs.coralproject.net/api/schema
+test_credentials: none-published
+notes: >-
+  No hosted public sandbox, magic test values, or test-mode key prefixes are
+  published; the self-hosted development install plus the dev-only GraphiQL
+  playground are the testing surface.
